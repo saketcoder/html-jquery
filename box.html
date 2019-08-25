@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<style>
+    .container {
+        border: 3px solid black;
+        display: inline-table;
+        padding: 5px;
+        font-size: 25px;
+        background-color: lightgray;
+        width: 250px;
+    }
+
+    li {
+        font-size: 20px;
+        border: 2px solid black;
+        margin: 10px;
+        width: 100px;
+    }
+</style>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#list li').draggable({
+
+            helper: 'clone',
+            revert: 'invalid'
+        });
+        $('#divcnt').droppable({
+            accept: 'li[data-value="country"]',
+            drop: function (event, ui) {
+                $('#cnt').append(ui.draggable);
+            }
+        });
+        $('#divcty').droppable({
+            accept: 'li[data-value="city"]',
+            drop: function (event, ui) {
+                $('#cty').append(ui.draggable);
+            }
+        });
+        $('#divllg').droppable({
+            accept: 'li[data-value="village"]',
+            drop: function (event, ui) {
+                $('#vllg').append(ui.draggable);
+            }
+        });
+
+    });
+</script>
+
+<body>
+    <div class="container">
+        Countries & Cities
+        <ul id="list">
+            <li data-value="country">India</li>
+            <li data-value="city">Delhi</li>
+            <li data-value="village">Deoria</li>
+
+        </ul>
+    </div>
+
+    <div class="container" id="divcnt">
+        Countries
+        <ul id="cnt">
+
+        </ul>
+    </div>
+
+    <div class="container" id="divcty">
+        Cities
+        <ul id="cty">
+
+        </ul>
+    </div>
+
+    <div class="container" id="divllg">
+        village
+        <ul id="vllg">
+
+        </ul>
+    </div>
+</body>
+
+</html>0
